@@ -1,0 +1,68 @@
+{% extends 'inv/base.html' %}
+
+{% block body %} 
+
+  <div class="add_buttons">
+
+    <div class="button-group"> 
+      <a href="{% url 'display_Export' id %}" class="btn btn-primary btn-md btn-trim" role="button">النثريات</a>
+      <a href="{% url 'add__Export' id %}" class="btn btn-warning btn-sm btn-pad" role="button"> +</a>
+
+      <a href="{% url 'display_Import' id %}" class="btn btn-primary btn-md btn-trim" role="button"> الواردات </a>
+      <a href="{% url 'add__Import' id %}" class="btn btn-warning btn-sm btn-pad" role="button"> +</a>
+
+    </div>
+
+  </div>
+
+  <div>
+
+    <h4>Currently Viewing {{ head }}</h4>
+  </div>
+
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>الرقم</th>
+        <th>التفاصيل </th>
+        <th>المبلغ</th>
+        <th>التاريخ</th>
+      </tr>
+    </thead>
+
+    <tbody>
+
+      {% for item in items %}
+
+      <tr>
+        <td>{{ item.pk }}
+        <td>{{ item.details }}</td>
+        <td>{{ item.Amount }}</td>
+        <td>{{ item.dateCreted }}</td>
+        {% if header == "Import" %}
+        <td>
+            <a href="{% url 'edit_Export' item.pk %}" class="btn btn-warning btn-sm" role="button" aria-pressed="true" > تعديل</a>
+            <a href="{% url 'delete_Export' item.pk%}" class="btn btn-danger btn-sm" role="button" aria-pressed="true" > x</a>
+        </td>
+      
+        {% else %}
+        <td>
+          <a href="{% url 'edit_Import' item.pk %}" class="btn btn-warning btn-sm" role="button" aria-pressed="true" > تعديل</a>
+          <a href="{% url 'delete_Import' item.pk%}" class="btn btn-danger btn-sm" role="button" aria-pressed="true" > x</a>
+      </td>
+        {% endif %}
+      </tr>
+        {% endfor %}
+        <br>
+        <tr>
+        <td>#</td>
+        <td>المجموع النهائي </td>
+        <td>{{Total.Amount__sum}}</td>
+        <td></td>
+      </tr>
+
+     
+    </tbody>
+  </table>
+
+{% endblock %}

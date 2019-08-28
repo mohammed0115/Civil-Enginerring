@@ -1,0 +1,17 @@
+
+        {% elif header== "ElectricityWork" %}
+        <td>
+          <a href="{% url 'edit_electricityWork' item.pk %}" class="btn btn-warning btn-sm" role="button" aria-pressed="true" > تعديل</a>
+          <a href="{% url 'delete_electricityWork' item.pk%}" class="btn btn-danger btn-sm" role="button" aria-pressed="true" > x</a>
+         </td>
+      
+        {% elif header == "CebakaWork" %}
+        <td>
+        <a href="{% url 'edit_CebakaWork' item.pk %}" class="btn btn-warning btn-sm" role="button" aria-pressed="true" > تعديل</a>
+        <a href="{% url 'delete_CebakaWork' item.pk%}" class="btn btn-danger btn-sm" role="button" aria-pressed="true" > x</a>
+       </td>
+        {% elif header == "BulatWork" %}
+        <td>
+         <a href="{% url 'edit_BulatWork' item.pk %}" class="btn btn-warning btn-sm" role="button" aria-pressed="true" > تعديل</a>
+         <a href="{% url 'delete_BulatWork' item.pk%}" class="btn btn-danger btn-sm" role="button" aria-pressed="true" > x</a>
+         </td>

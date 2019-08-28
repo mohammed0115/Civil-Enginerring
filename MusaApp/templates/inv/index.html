@@ -1,0 +1,109 @@
+{% extends 'inv/base.html' %}
+
+{% block body %} 
+
+  <div class="add_buttons">
+
+    <div class="button-group"> 
+      <a href="{% url 'display_buildingWorks' id %}" class="btn btn-primary btn-md btn-trim" role="button"> أعمال البناء</a>
+      <a href="{% url 'add_buildingWorks' id %}" class="btn btn-warning btn-sm btn-pad" role="button"> +</a>
+      <a href="{% url 'display_negashaWork' id %}" class="btn btn-primary btn-md btn-trim" role="button"> أعمال النقاشه</a>
+      <a href="{% url 'add_negashaWork' id %}" class="btn btn-warning btn-sm btn-pad" role="button"> +</a>
+      <a href="{% url 'display_electricityWork' id %}" class="btn btn-primary btn-md btn-trim" role="button"> أعمال الكهرباء</a>
+      <a href="{% url 'add_electricityWork' id %}" class="btn btn-warning btn-sm btn-pad" role="button"> +</a>
+      <a href="{% url 'display_CebakaWork' id %}" class="btn btn-primary btn-md btn-trim" role="button">أعمال السباكه</a>
+      <a href="{% url 'add_CebakaWork' id %}" class="btn btn-warning btn-sm btn-pad" role="button"> +</a>
+      <a href="{% url 'display_BayatWork' id %}" class="btn btn-primary btn-md btn-trim" role="button"> أعمال البياض</a>
+      <a href="{% url 'add_BayatWork' id %}" class="btn btn-warning btn-sm btn-pad" role="button"> +</a>
+      <a href="{% url 'display_BulatWork' id %}" class="btn btn-primary btn-md btn-trim" role="button"> أعمال البلاط</a>
+      <a href="{% url 'add_BulatWork' id %}" class="btn btn-warning btn-sm btn-pad" role="button"> +</a>
+     
+    </div>
+
+  </div>
+<br>
+<br>
+  <div>
+
+    <h4> يعرض حاليا {{head}} </h4>
+  </div>
+
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>الرقم</th>
+        <th>التفاصيل </th>
+        <th>الوحده</th>
+        <th>الكميه</th>
+        <th>الشعر</th>
+        <th>الطابق </th>
+        <th>الجمله</th>
+      </tr>
+    </thead>
+
+    <tbody>
+
+      {% for item in items %}
+
+      <tr>
+        <td>{{ item.pk }}
+        <td>{{ item.details }}</td>
+        <td>{{ item.unit }}</td>
+        <td>{{ item.amount }}</td>
+        <td>{{ item.price }}</td>
+        <td>{{item.flour}} </td>
+        <td>{{item.total_cost}}SDG</td>
+    
+        {% if header == "BuildingWorks" %}
+        <td>
+            <a href="{% url 'edit_buildingWorks' item.pk %}" class="btn btn-warning btn-sm" role="button" aria-pressed="true" > تعديل</a>
+            <a href="{% url 'delete_buildingWorks' item.pk%}" class="btn btn-danger btn-sm" role="button" aria-pressed="true" > x</a>
+        </td>
+        {% elif header == "NegashaWork" %}
+        <td>
+          <a href="{% url 'edit_negashaWork' item.pk %}" class="btn btn-warning btn-sm" role="button" aria-pressed="true" > تعديل</a>
+          <a href="{% url 'delete_negashaWork' item.pk%}" class="btn btn-danger btn-sm" role="button" aria-pressed="true" > x</a>
+        </td>
+        {% elif header == "ElectricityWork" %}
+        <td>
+          <a href="{% url 'edit_electricityWork' item.pk %}" class="btn btn-warning btn-sm" role="button" aria-pressed="true" > تعديل</a>
+          <a href="{% url 'delete_electricityWork' item.pk%}" class="btn btn-danger btn-sm" role="button" aria-pressed="true" > x</a>
+         </td>
+
+
+         {% elif header == "CebakaWork" %}
+        <td>
+        <a href="{% url 'edit_CebakaWork' item.pk %}" class="btn btn-warning btn-sm" role="button" aria-pressed="true" > تعديل</a>
+        <a href="{% url 'delete_CebakaWork' item.pk%}" class="btn btn-danger btn-sm" role="button" aria-pressed="true" > x</a>
+       </td>
+        {% elif header == "BulatWork" %}
+        <td>
+         <a href="{% url 'edit_BulatWork' item.pk %}" class="btn btn-warning btn-sm" role="button" aria-pressed="true" > تعديل</a>
+         <a href="{% url 'delete_BulatWork' item.pk%}" class="btn btn-danger btn-sm" role="button" aria-pressed="true" > x</a>
+         </td>
+    
+        {% else %}
+        <td>
+        <a href="{% url 'edit_BayatWork' item.pk %}" class="btn btn-warning btn-sm" role="button" aria-pressed="true" > تعديل</a>
+       <a href="{% url 'delete_BayatWork' item.pk%}" class="btn btn-danger btn-sm" role="button" aria-pressed="true" > x</a>
+       </td>
+        {% endif %}
+ 
+
+      </tr>
+
+      {% endfor %}
+      <tr>
+        <td>#</td>
+        <td>المجموع النهائي </td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>{{Total.sum__sum}}</td>
+        
+      </tr>
+    </tbody>
+  </table>
+
+{% endblock %}

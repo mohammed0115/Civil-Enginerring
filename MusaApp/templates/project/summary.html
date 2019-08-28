@@ -1,0 +1,59 @@
+{% extends 'inv/base.html' %}
+
+{% block body %} 
+
+ 
+  <div>
+
+    <h4>Currently Viewing {{ head }}</h4>
+  </div>
+
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>البيان</th>
+        <th> الدائن </th>
+        <th>المدين</th>
+      </tr>
+    </thead>
+
+    <tbody>
+
+     
+      <tr>
+        <td>{{ a1 }}</td>
+        <td>{{build.sum__sum}}</td>
+      </tr>
+      <tr>
+        <td>{{ a2 }}</td>
+        <td>{{Negasha.sum__sum}}</td>
+      </tr>
+      <tr>
+        <td>{{ a3 }}</td>
+        <td>{{cebaka.sum__sum}}</td>
+      </tr>
+      <tr>
+        <td>{{ a4 }}</td>
+        <td>{{bulat.sum__sum}}</td>
+      </tr>
+      <tr>
+        <td>{{ a5 }}</td>
+        <td>{{bayat.sum__sum}}</td>
+      </tr>
+      <tr>
+        <td>{{ a6 }}</td>
+        <td>{{Electric.sum__sum}}</td>
+      </tr>
+      <tr>
+        <td>{{ a7 }}</td>
+        <td>{{Export.Amount__sum}}</td>
+      </tr>
+      <tr>
+        <td>{{a8}}</td>
+        <td></td>
+        <td>{{Import.Amount__sum}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+{% endblock %}
